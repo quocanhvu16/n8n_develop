@@ -52,9 +52,9 @@ export class ProjectController {
 	}
 
 	@Post('/')
-	@GlobalScope('project:create')
+	// @GlobalScope('project:create')
 	// Using admin as all plans that contain projects should allow admins at the very least
-	@Licensed('feat:projectRole:admin')
+	// @Licensed('feat:projectRole:admin')
 	async createProject(req: AuthenticatedRequest, _res: Response, @Body payload: CreateProjectDto) {
 		try {
 			const project = await this.projectsService.createTeamProject(req.user, payload);

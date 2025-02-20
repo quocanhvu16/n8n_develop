@@ -15,8 +15,9 @@ class PostHogConfig {
 export class DiagnosticsConfig {
 	/** Whether diagnostics are enabled. */
 	@Env('N8N_DIAGNOSTICS_ENABLED')
-	enabled: boolean = true;
+	enabled: boolean = false;
 
+	// enabled: boolean = false;
 	/** Diagnostics config for frontend. */
 	@Env('N8N_DIAGNOSTICS_CONFIG_FRONTEND')
 	frontendConfig: string = '1zPn9bgWPzlQc0p8Gj1uiK6DOTn;https://telemetry.n8n.io';

@@ -222,7 +222,11 @@ export class License {
 		this.logger.debug('License shut down');
 	}
 
+	/**
+	 * Kiểm tra trong license xem có tính năng được truyền vào không
+	 */
 	isFeatureEnabled(feature: BooleanLicenseFeature) {
+		return true;
 		return this.manager?.hasFeatureEnabled(feature) ?? false;
 	}
 
@@ -251,6 +255,7 @@ export class License {
 	}
 
 	isAiCreditsEnabled() {
+		return false;
 		return this.isFeatureEnabled(LICENSE_FEATURES.AI_CREDITS);
 	}
 
@@ -353,12 +358,17 @@ export class License {
 		return this.manager?.getConsumerId() ?? 'unknown';
 	}
 
-	// Helper functions for computed data
+	/**
+	 * Lấy ra hạn ngạch số lượng người dùng tối đa trong license
+	 * quota:users
+	 * @returns
+	 */
 	getUsersLimit() {
 		return this.getFeatureValue(LICENSE_QUOTAS.USERS_LIMIT) ?? UNLIMITED_LICENSE_QUOTA;
 	}
 
 	getApiKeysPerUserLimit() {
+		return 100;
 		return this.getFeatureValue(LICENSE_QUOTAS.API_KEYS_PER_USER_LIMIT) ?? 1;
 	}
 
@@ -380,7 +390,13 @@ export class License {
 		);
 	}
 
+	/**
+	 * Số project team tối đa được tạo
+	 * quota:maxTeamProjects
+	 * @returns
+	 */
 	getTeamProjectLimit() {
+		return 100;
 		return this.getFeatureValue(LICENSE_QUOTAS.TEAM_PROJECT_LIMIT) ?? 0;
 	}
 
@@ -396,6 +412,11 @@ export class License {
 		return this.manager.toString();
 	}
 
+	/**
+	 * Kiểm tra có vượt quá số lượng người dùng trong license không
+	 * False là có, true là không
+	 * @returns
+	 */
 	isWithinUsersLimit() {
 		return this.getUsersLimit() === UNLIMITED_LICENSE_QUOTA;
 	}

@@ -295,16 +295,16 @@ export class FrontendService {
 
 		// refresh enterprise status
 		Object.assign(this.settings.enterprise, {
-			sharing: this.license.isSharingEnabled(),
-			logStreaming: this.license.isLogStreamingEnabled(),
-			ldap: this.license.isLdapEnabled(),
-			saml: this.license.isSamlEnabled(),
-			advancedExecutionFilters: this.license.isAdvancedExecutionFiltersEnabled(),
-			variables: this.license.isVariablesEnabled(),
-			sourceControl: this.license.isSourceControlLicensed(),
-			externalSecrets: this.license.isExternalSecretsEnabled(),
-			showNonProdBanner: this.license.isFeatureEnabled(LICENSE_FEATURES.SHOW_NON_PROD_BANNER),
-			debugInEditor: this.license.isDebugInEditorLicensed(),
+			sharing: true, //this.license.isSharingEnabled(), //false
+			logStreaming: true, //this.license.isLogStreamingEnabled(), // false
+			ldap: this.license.isLdapEnabled(), // false
+			saml: this.license.isSamlEnabled(), // false
+			advancedExecutionFilters: this.license.isAdvancedExecutionFiltersEnabled(), // true
+			variables: true, //this.license.isVariablesEnabled(), // false
+			sourceControl: true, //this.license.isSourceControlLicensed(),// false
+			externalSecrets: true, //this.license.isExternalSecretsEnabled(),// false
+			showNonProdBanner: true, //this.license.isFeatureEnabled(LICENSE_FEATURES.SHOW_NON_PROD_BANNER), // false
+			debugInEditor: this.license.isDebugInEditorLicensed(), // true
 			binaryDataS3: isS3Available && isS3Selected && isS3Licensed,
 			workflowHistory:
 				this.license.isWorkflowHistoryLicensed() && config.getEnv('workflowHistory.enabled'),

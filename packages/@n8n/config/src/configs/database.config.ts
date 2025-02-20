@@ -95,7 +95,7 @@ class MysqlConfig {
 
 	/** MySQL database password */
 	@Env('DB_MYSQLDB_PASSWORD')
-	password: string = '';
+	password: string = '12345678';
 
 	/** MySQL database port */
 	@Env('DB_MYSQLDB_PORT')

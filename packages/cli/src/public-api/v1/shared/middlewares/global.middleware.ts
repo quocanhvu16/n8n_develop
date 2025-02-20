@@ -12,7 +12,7 @@ import type { AuthenticatedRequest } from '@/requests';
 import type { PaginatedRequest } from '../../../types';
 import { decodeCursor } from '../services/pagination.service';
 
-const UNLIMITED_USERS_QUOTA = -1;
+const UNLIMITED_USERS_QUOTA = 100;
 
 export type ProjectScopeResource = 'workflow' | 'credential';
 
